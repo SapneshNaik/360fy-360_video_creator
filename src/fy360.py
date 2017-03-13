@@ -454,7 +454,7 @@ class Fy360(QWidget):
         #title bar name
         self.setWindowTitle("360fy - A Simple 360° Video Creator") 
         # set logo
-        self.setWindowIcon(QIcon('../resource/logo.png'))        
+        self.setWindowIcon(QIcon('../resource/logo.png'))
         self.setMinimumSize(814, 350)
         self.show()
 
