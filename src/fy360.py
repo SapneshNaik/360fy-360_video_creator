@@ -196,7 +196,7 @@ class Fy360(QWidget):
         print "[360fy]------- Merging all frames to genenrate dewarped video\n"
         subprocess.call(['./merge.sh', outFrameRate, outResolution])
         print "[360fy]------- Adding original Audio to the dewarped video\n"    
-        subprocess.call(['./addAudio.sh', outputV])
+        subprocess.call(['./add_audio.sh', outputV])
         print "[360fy]------- Process complete\n"
         print "[360fy]------- The 360° video is located at : {0}\n".format(outputV)
 
