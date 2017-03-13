@@ -269,7 +269,7 @@ class Fy360(QWidget):
         self.label_4 = QLabel(self.Dialog)
         self.label_4.setGeometry(QRect(10, 20, 41, 51))
         self.label_4.setText("")
-        self.label_4.setPixmap(QPixmap("file.png"))
+        self.label_4.setPixmap(QPixmap("../resource/logo.png"))
         self.label_4.setObjectName("label_4")
 
         #self.retranslateUi(self.Dialog)
@@ -377,16 +377,16 @@ class Fy360(QWidget):
 
         self.closeBut = QPushButton("Close")
         self.closeBut.setStyleSheet('QPushButton { color: red;}')
-        closeIcon = QIcon('exit1.png')
+        closeIcon = QIcon('../resource/exit.png')
         self.closeBut.setIcon(closeIcon)
         self.closeBut.clicked.connect(self.closeAction)
 
         self.helpBut = QPushButton("Help")
         self.helpBut.setStyleSheet('QPushButton { color: green;}')
         self.helpBut.setFixedWidth(87)
-        helpIcon = QIcon('help.png')
+        helpIcon = QIcon('../resource/help.png')
         self.helpBut.setIcon(helpIcon)
-        startIcon = QIcon('logo.png')
+        startIcon = QIcon('../resource/logo.png')
         self.startBut.setIcon(startIcon)
  
 
@@ -454,7 +454,7 @@ class Fy360(QWidget):
         #title bar name
         self.setWindowTitle("360fy - A Simple 360° Video Creator") 
         # set logo
-        self.setWindowIcon(QIcon('logo.png'))        
+        self.setWindowIcon(QIcon('../resource/logo.png'))        
         self.setMinimumSize(814, 350)
         self.show()
 
