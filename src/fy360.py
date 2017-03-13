@@ -203,12 +203,12 @@ class Fy360(QWidget):
 
     def stripAudio(self):
         inputV = self.iVidPath
-        self.resolution = subprocess.check_output(['./resolution.sh', inputV])
+        self.resolution = subprocess.check_output(['./frame_size.sh', inputV])
         print "[360fy]-------Input video properties\n"
         print "[360fy]-------Video frame size = {0}\n".format(self.resolution)
         
         #print self.resolution
-        self.frameRate = subprocess.check_output(['./frameRate.sh', inputV])
+        self.frameRate = subprocess.check_output(['./frame_rate.sh', inputV])
         print "[360fy]-------Video frame rate = {0}\n".format(self.frameRate)
 
         print "[360fy]-------Stripping Audio from input video\n"
