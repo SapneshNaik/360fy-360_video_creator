@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 """
-360fy - A simple 360' video creator
+360fy - A simple 360° video creator
 author: 360fy team(Girish Saunshi, Sapnesh Naik, Divya Hiremath, Nadeem Jamadar, Maitri Huggi)
 contact: Sapnesh Naik <sapneshwk@gmail.com>
 """
