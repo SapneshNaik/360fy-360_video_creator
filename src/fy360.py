@@ -216,6 +216,7 @@ class Fy360(QWidget):
 
 
     def cleanup(self):
+
         print "[360fy]------- Cleaning Up...\n"
         subprocess.call(['rm', '../temp_data/video.mp4', '../temp_data/audio.mp3'] + glob("../temp_data/frames/*"))
         print "[360fy]------- Enjoy!!\n"
@@ -226,7 +227,6 @@ class Fy360(QWidget):
         self.Dialog.setObjectName("self.Dialog")
         self.Dialog.setWindowModality(Qt.ApplicationModal)
         self.Dialog.setEnabled(True)
-        #self.Dialog.resize(543, 196)
         font = QFont()
         font.setPointSize(11)
         font.setItalic(False)
@@ -272,7 +272,6 @@ class Fy360(QWidget):
         self.label_4.setPixmap(QPixmap("../resource/logo.png"))
         self.label_4.setObjectName("label_4")
 
-        #self.retranslateUi(self.Dialog)
         QMetaObject.connectSlotsByName(self.Dialog)
         self.Dialog.setFixedSize(543,196)
         self.Dialog.setWindowFlags(self.Dialog.windowFlags() | Qt.WindowStaysOnTopHint)
@@ -379,7 +378,7 @@ class Fy360(QWidget):
 
 
 
-
+    # this opens up the video folder when open folder button is clicked in the process complete dialog
     def open_folder(self):
 
         dirPath = os.path.dirname(os.path.abspath(self.oVidPath))
