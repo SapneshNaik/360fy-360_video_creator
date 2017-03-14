@@ -1,4 +1,6 @@
 #!/bin/bash
+#This scrpit backs up my project to google drive.
+#new to github, will use this untill I'm confident with the basics
 filename=`date +"git_%d-%m_Time_%I-%M%p".tar.gz`
 echo $filename
 echo " archiving now"
