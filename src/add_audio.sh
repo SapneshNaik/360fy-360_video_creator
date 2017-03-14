@@ -3,3 +3,4 @@
 #the user specififed final location
 
 `ffmpeg -i ../temp_data/video.mp4 -i ../temp_data/audio.mp3 -c copy -map 0:0 -map 1:0 -flags +global_header "$1" -y`
+`ffmpeg -i ../temp_data/video_unscaled.mp4 -i ../temp_data/audio.mp3 -c copy -map 0:0 -map 1:0 -flags +global_header ../temp_data/video_audio.mp4  -y`
