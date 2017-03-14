@@ -223,10 +223,10 @@ class Fy360(QWidget):
     def showVid(self):
 
         self.Dialog = QDialog()
-        self.Dialog.setObjectName("self.self.Dialog")
+        self.Dialog.setObjectName("self.Dialog")
         self.Dialog.setWindowModality(Qt.ApplicationModal)
         self.Dialog.setEnabled(True)
-        self.Dialog.resize(543, 196)
+        #self.Dialog.resize(543, 196)
         font = QFont()
         font.setPointSize(11)
         font.setItalic(False)
@@ -243,7 +243,7 @@ class Fy360(QWidget):
         self.label_2.setTextFormat(Qt.PlainText)
         self.label_2.setObjectName("label_2")
         self.fileSize = QLabel(self.Dialog)
-        self.fileSize.setGeometry(QRect(145, 50, 67, 17))
+        self.fileSize.setGeometry(QRect(145, 50, 80, 17))
         self.fileSize.setObjectName("fileSize")
         self.label_3 = QLabel(self.Dialog)
         self.label_3.setGeometry(QRect(60, 80, 110, 17))
@@ -276,25 +276,17 @@ class Fy360(QWidget):
         QMetaObject.connectSlotsByName(self.Dialog)
         self.Dialog.setFixedSize(543,196)
         self.Dialog.setWindowFlags(self.Dialog.windowFlags() | Qt.WindowStaysOnTopHint)
-        self.retranslateUi(self.Dialog)
+        self.retranslateDoneUi(self.Dialog)
         self.closeButtton.clicked.connect(self.Dialog.close)
+        #calls openfile fn to open o/p video in process complete dialog
         self.openButton.clicked.connect(self.openFile)
+        #calls open_folder fn to open o/p video folder in process complete dialog
         self.openFolderButton.clicked.connect(self.open_folder)
         self.Dialog.exec_()
 
-    def open_folder(self):
+        #this is showVid!!!!
 
-        dirPath = os.path.dirname(os.path.abspath(self.oVidPath))
-        QDesktopServices.openUrl(QUrl.fromLocalFile(dirPath))
-        self.Dialog.close()
-
-    def openFile(self):
-
-
-        QDesktopServices.openUrl(QUrl.fromLocalFile(self.oVidPath))
-        self.Dialog.close()
-
-    def retranslateUi(self, Dialog):
+    def retranslateDoneUi(self, Dialog):
         _translate = QCoreApplication.translate
         self.Dialog.setWindowTitle(_translate("self.Dialog", "Process Complete"))
         self.label.setText(_translate("self.Dialog", "Process Complete"))
@@ -312,6 +304,95 @@ class Fy360(QWidget):
         self.fileSize.setText(self.fileM)
 
         #close dialoge upon close button click
+
+    #this fn is called when help is clicked
+    def help_dialog(self):
+
+        self.helpDialog = QDialog()
+        self.helpDialog.setObjectName("self.helpDialog")
+        self.helpDialog.setWindowModality(Qt.ApplicationModal)
+        self.helpDialog.setFixedSize(362, 151)
+        icon = QIcon()
+        icon.addPixmap(QPixmap("../resource/logo.png"), QIcon.Normal, QIcon.Off)
+        self.helpDialog.setWindowIcon(icon)
+        self.helpDialog.setLayoutDirection(Qt.LeftToRight)
+        self.helpDialog.setAutoFillBackground(False)
+        self.helpDialog.setSizeGripEnabled(False)
+        self.helpDialog.setModal(False)
+        self.docButton = QPushButton(self.helpDialog)
+        self.docButton.setGeometry(QRect(180, 100, 141, 41))
+        icon1 = QIcon()
+        icon1.addPixmap(QPixmap("../resource/Doc.png"), QIcon.Normal, QIcon.Off)
+        self.docButton.setIcon(icon1)
+        self.docButton.setObjectName("docButton")
+        self.tubeButton = QPushButton(self.helpDialog)
+        self.tubeButton.setGeometry(QRect(50, 100, 111, 41))
+        icon2 = QIcon()
+        icon2.addPixmap(QPixmap("../resource/YouTube.png"), QIcon.Normal, QIcon.Off)
+        self.tubeButton.setIcon(icon2)
+        self.tubeButton.setObjectName("tubeButton")
+        self.label = QLabel(self.helpDialog)
+        self.label.setGeometry(QRect(20, 10, 331, 21))
+        font = QFont()
+        font.setPointSize(12)
+        self.label.setFont(font)
+        self.label.setObjectName("label")
+        self.label_2 = QLabel(self.helpDialog)
+        self.label_2.setGeometry(QRect(20, 30, 321, 21))
+        font = QFont()
+        font.setPointSize(12)
+        self.label_2.setFont(font)
+        self.label_2.setObjectName("label_2")
+        self.label_3 = QLabel(self.helpDialog)
+        self.label_3.setGeometry(QRect(20, 50, 221, 20))
+        font = QFont()
+        font.setPointSize(12)
+        self.label_3.setFont(font)
+        self.label_3.setObjectName("label_3")
+        self.label_4 = QLabel(self.helpDialog)
+        self.label_4.setGeometry(QRect(30, 80, 211, 17))
+        font = QFont()
+        font.setPointSize(8)
+        font.setItalic(True)
+        self.label_4.setFont(font)
+        self.label_4.setObjectName("label_4")
+
+        self.retranslate_help_ui(self.helpDialog)
+        QMetaObject.connectSlotsByName(self.helpDialog)
+
+        self.helpDialog.exec_()
+
+
+
+    #help_dialog calls this inturn to set some labels messages
+    def retranslate_help_ui(self, helpDialog):
+
+        _translate = QCoreApplication.translate
+        self.helpDialog.setWindowTitle(_translate("self.helpDialog", "Help"))
+        self.docButton.setText(_translate("self.helpDialog", "Documentation"))
+        self.tubeButton.setText(_translate("self.helpDialog", "YouTube"))
+        self.label.setText(_translate("self.helpDialog", "If you have trouble understanding something"))
+        self.label_2.setText(_translate("self.helpDialog", "please consider reading the documentation"))
+        self.label_3.setText(_translate("self.helpDialog", "or watching the tutorial videos."))
+        self.label_4.setText(_translate("self.helpDialog", "* Internet Charges may apply"))
+
+
+
+
+
+    def open_folder(self):
+
+        dirPath = os.path.dirname(os.path.abspath(self.oVidPath))
+        QDesktopServices.openUrl(QUrl.fromLocalFile(dirPath))
+        self.Dialog.close()
+
+    def openFile(self):
+
+
+        QDesktopServices.openUrl(QUrl.fromLocalFile(self.oVidPath))
+        self.Dialog.close()
+
+
 
     def convertSize(self):
         size_bytes = self.fileS
@@ -413,7 +494,8 @@ class Fy360(QWidget):
         chooseVidOut.clicked.connect(self.saveOutputVid)
         #call new_dewarp function 
         self.startBut.clicked.connect(self.startMessage)
-        #self.helpBut.clicked.connect(self.showVid)
+        
+        self.helpBut.clicked.connect(self.help_dialog)
 
 
 
