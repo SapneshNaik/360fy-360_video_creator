@@ -319,7 +319,7 @@ class Fy360(QWidget):
         self.helpDialog.setSizeGripEnabled(False)
         self.helpDialog.setModal(False)
         self.docButton = QPushButton(self.helpDialog)
-        self.docButton.setGeometry(QRect(180, 100, 141, 41))
+        self.docButton.setGeometry(QRect(200, 100, 111, 41))
         icon1 = QIcon()
         icon1.addPixmap(QPixmap("../resource/Doc.png"), QIcon.Normal, QIcon.Off)
         self.docButton.setIcon(icon1)
@@ -343,7 +343,7 @@ class Fy360(QWidget):
         self.label_2.setFont(font)
         self.label_2.setObjectName("label_2")
         self.label_3 = QLabel(self.helpDialog)
-        self.label_3.setGeometry(QRect(20, 50, 221, 20))
+        self.label_3.setGeometry(QRect(20, 50, 321, 20))
         font = QFont()
         font.setPointSize(12)
         self.label_3.setFont(font)
@@ -358,6 +358,8 @@ class Fy360(QWidget):
 
         self.retranslate_help_ui(self.helpDialog)
         QMetaObject.connectSlotsByName(self.helpDialog)
+        self.docButton.clicked.connect(self.open_github)
+
 
         self.helpDialog.exec_()
 
@@ -368,16 +370,20 @@ class Fy360(QWidget):
 
         _translate = QCoreApplication.translate
         self.helpDialog.setWindowTitle(_translate("self.helpDialog", "Help"))
-        self.docButton.setText(_translate("self.helpDialog", "Documentation"))
+        self.docButton.setText(_translate("self.helpDialog", "GitHub"))
         self.tubeButton.setText(_translate("self.helpDialog", "YouTube"))
         self.label.setText(_translate("self.helpDialog", "If you have trouble understanding something"))
-        self.label_2.setText(_translate("self.helpDialog", "please consider reading the documentation"))
-        self.label_3.setText(_translate("self.helpDialog", "or watching the tutorial videos."))
+        self.label_2.setText(_translate("self.helpDialog", "please consider reading the instructions on"))
+        self.label_3.setText(_translate("self.helpDialog", "our github or watching the tutorial videos."))
         self.label_4.setText(_translate("self.helpDialog", "* Internet Charges may apply"))
 
 
 
 
+    def open_github(self):
+
+        QDesktopServices.openUrl(QUrl('https://github.com/SapneshNaik/360fy-kogeto_dot/blob/master/README.md'))
+        self.helpDialog.close()
     # this opens up the video folder when open folder button is clicked in the process complete dialog
     def open_folder(self):
 
