@@ -41,18 +41,18 @@
   <widget class="QPushButton" name="docButton">
    <property name="geometry">
     <rect>
-     <x>180</x>
+     <x>200</x>
      <y>100</y>
-     <width>141</width>
+     <width>111</width>
      <height>41</height>
     </rect>
    </property>
    <property name="text">
-    <string>Documentation</string>
+    <string>GitHub</string>
    </property>
    <property name="icon">
     <iconset>
-     <normaloff>../../../Personal/cd01e9c9b9e961e1c896e5556cb7b159.png</normaloff>../../../Personal/cd01e9c9b9e961e1c896e5556cb7b159.png</iconset>
+     <normaloff>../../../Personal/3641.png</normaloff>../../../Personal/3641.png</iconset>
    </property>
   </widget>
   <widget class="QPushButton" name="tubeButton">
@@ -69,7 +69,7 @@
    </property>
    <property name="icon">
     <iconset>
-     <normaloff>../../../Personal/YouTube-icon-full_color.png</normaloff>../../../Personal/YouTube-icon-full_color.png</iconset>
+     <normaloff>../../../Personal/YouTube-icon-dark.png</normaloff>../../../Personal/YouTube-icon-dark.png</iconset>
    </property>
   </widget>
   <widget class="QLabel" name="label">

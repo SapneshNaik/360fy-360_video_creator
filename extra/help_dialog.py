@@ -23,15 +23,15 @@ class Ui_Dialog(object):
         Dialog.setSizeGripEnabled(False)
         Dialog.setModal(False)
         self.docButton = QtWidgets.QPushButton(Dialog)
-        self.docButton.setGeometry(QtCore.QRect(180, 100, 141, 41))
+        self.docButton.setGeometry(QtCore.QRect(200, 100, 111, 41))
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("../../../Personal/cd01e9c9b9e961e1c896e5556cb7b159.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap("../../../Personal/3641.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.docButton.setIcon(icon1)
         self.docButton.setObjectName("docButton")
         self.tubeButton = QtWidgets.QPushButton(Dialog)
         self.tubeButton.setGeometry(QtCore.QRect(50, 100, 111, 41))
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("../../../Personal/YouTube-icon-full_color.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon2.addPixmap(QtGui.QPixmap("../../../Personal/YouTube-icon-dark.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.tubeButton.setIcon(icon2)
         self.tubeButton.setObjectName("tubeButton")
         self.label = QtWidgets.QLabel(Dialog)
@@ -66,18 +66,10 @@ class Ui_Dialog(object):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Help"))
-        self.docButton.setText(_translate("Dialog", "Documentation"))
+        self.docButton.setText(_translate("Dialog", "GitHub"))
         self.tubeButton.setText(_translate("Dialog", "YouTube"))
         self.label.setText(_translate("Dialog", "If you have trouble understanding something"))
         self.label_2.setText(_translate("Dialog", "please consider reading the documentation"))
         self.label_3.setText(_translate("Dialog", "or watching the tutorial videos."))
         self.label_4.setText(_translate("Dialog", "* Internet Charges may apply"))
 
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    Dialog = QtWidgets.QDialog()
-    ui = Ui_Dialog()
-    ui.setupUi(Dialog)
-    Dialog.show()
-    sys.exit(app.exec_())
