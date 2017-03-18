@@ -6,7 +6,10 @@ author: 360fy team(Girish Saunshi, Sapnesh Naik, Divya Hiremath, Nadeem Jamadar,
 contact: Sapnesh Naik <sapneshwk@gmail.com>
 """
 import sys
-from PyQt5.QtWidgets import (QDialog, QApplication, QWidget, QToolTip, QPushButton, QMessageBox, QGridLayout, QLineEdit, QHBoxLayout, QVBoxLayout, QLabel, QDesktopWidget, QFileDialog)
+from PyQt5.QtWidgets import (QSplashScreen, 
+    QDialog, QApplication, QWidget, QToolTip, QPushButton, 
+    QMessageBox, QGridLayout, QLineEdit, QHBoxLayout, QVBoxLayout, 
+    QLabel, QDesktopWidget, QFileDialog)
 from PyQt5.QtGui import QIcon, QFont, QPixmap, QDesktopServices
 from PyQt5.QtCore import Qt, QRect, QCoreApplication, QMetaObject, QUrl
 import subprocess
@@ -17,6 +20,7 @@ from SimpleCV import VideoStream, Display, Image, VirtualCamera
 import os
 import math
 import urllib
+import time
 
 
 
@@ -580,5 +584,14 @@ class bcolors:
 if __name__ == '__main__':
     
     app = QApplication(sys.argv)
+    splash_pix = QPixmap('../resource/logo.png')
+    start = time.time()
+    splash = QSplashScreen(splash_pix, Qt.WindowStaysOnTopHint)
+    splash.show()
+    while time.time() - start < 1:
+        time.sleep(0.001)
+        app.processEvents()
+
     ex = Fy360()
+    splash.finish(ex)
     sys.exit(app.exec_())
