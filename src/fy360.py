@@ -430,7 +430,7 @@ class Fy360(QWidget):
         self.tipImage = QLabel(self.tip_dialog)
         self.tipImage.setGeometry(QRect(40, 80, 401, 401))
         self.tipImage.setText("")
-        self.tipImage.setPixmap(QPixmap("../../../Pictures/tipBg.png"))
+        self.tipImage.setPixmap(QPixmap("../resource/Tip.png"))
         self.tipImage.setScaledContents(True)
         self.tipImage.setObjectName("tipImage")
         self.label_2 = QLabel(self.tip_dialog)
