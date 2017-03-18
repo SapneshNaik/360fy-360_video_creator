@@ -4,7 +4,7 @@
 filename=`date +"git_%d-%m_Time_%I-%M%p".tar.gz`
 echo $filename
 echo " archiving now"
-tar -zcvf "$filename" *
+tar -zcvf "$filename" --exclude='*.mp4' * 
 echo " Uploading now"
 
 gdrive upload --parent 0B8i5vCWNLhOGTF9OYlFESm5XNnc "$filename"
