@@ -67,7 +67,7 @@ class Fy360(QWidget):
             self.oVidPath = oFileNewName
 
         
-        
+    #this function checks if i/p and o/p videos have been selected and enables start button if both of them have    
     def check(self):
         checkIp = str(self.inputPath.text())
         checkOp = str(self.outputPath.text())
@@ -84,7 +84,7 @@ class Fy360(QWidget):
             self.startBut.setStyleSheet('QPushButton {background-color: gray; color: black; font-weight: bold ; font: 18px }')
  
 
-
+    #The heart of the program does the dearping and storing of frames as images
     def new_dewarp(self):
         vidpath = self.iVidPath
         def isInROI(x, y, R1, R2, Cx, Cy):
