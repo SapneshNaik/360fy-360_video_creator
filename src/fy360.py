@@ -5,6 +5,7 @@
 author: 360fy team(Girish Saunshi, Sapnesh Naik, Divya Hiremath, Nadeem Jamadar, Maitri Huggi)
 contact: Sapnesh Naik <sapneshwk@gmail.com>
 """
+#importing required packages
 import sys
 from PyQt5.QtWidgets import (QSplashScreen, 
     QDialog, QApplication, QWidget, QToolTip, QPushButton, 
@@ -35,23 +36,33 @@ class Fy360(QWidget):
     The __init__() method is a constructor method in Python language.'''
     def __init__(self):
         super(Fy360, self).__init__()
-        self.initUI()
+        self.initUI() #run initUI function when default contsructor is called
 
 
     #this fn executes when chooseVidIn is clicked
     def openInputVid(self):
         print bcolors.HEADER + "[360fy]------- Selecting input video\n" + bcolors.ENDC
+        #open a Qt file dialog which only accepts videos with avi, mp4, mkv or h264 extension 
         iFileName = QFileDialog.getOpenFileName(self, str("Open Video"), '', str("Video Files(*.avi *.mp4 *.mkv *.h264)"))
         print bcolors.OKGREEN + "[360fy]------- The input fle path is:{0}\n".format(iFileName[0]) + bcolors.ENDC
+        #set inputPath text to name of file selected from above file dialog
         self.inputPath.setText(str(iFileName[0]))
+        #storing file name in another variable ( because self.* variables are accessible anywhere in the class)
         self.iVidPath = iFileName[0]
 
 
     # this fn executes when chooseVidOut is clicked
     def saveOutputVid(self):
         print bcolors.HEADER +"[360fy]------- Selecting output video\n" + bcolors.ENDC
+        '''open a Qt file dialog to get save location
+           this only lets u save as .mp4
+           and default filename is set to input filename obtained from openInputVid(self) so this will not execute untill
+           that fn is executed first
+        '''
         oFileName = QFileDialog.getSaveFileName(self, str("Open Video"), self.iVidPath, str("Video Files (*.mp4)"), initialFilter='*.mp4')
+        
         #check extension
+        #check if user specifies mp4 extension in file name if not append .mp4 to filename
         if oFileName[0].endswith('.mp4'):
             print bcolors.OKGREEN + "[360fy]------- The output file path is {0}\n".format(oFileName[0])+ bcolors.ENDC
             oFileNewName = oFileName[0]
@@ -67,7 +78,7 @@ class Fy360(QWidget):
             self.oVidPath = oFileNewName
 
         
-    #this function checks if i/p and o/p videos have been selected and enables start button if both of them have    
+    #this function checks if i/p and o/p videos have been selected, if yes then it enables the start button.    
     def check(self):
         checkIp = str(self.inputPath.text())
         checkOp = str(self.outputPath.text())
@@ -84,9 +95,10 @@ class Fy360(QWidget):
             self.startBut.setStyleSheet('QPushButton {background-color: gray; color: black; font-weight: bold ; font: 18px }')
  
 
-    #The heart of the program does the dearping and storing of frames as images
+    #The heart of the program, does the dearping and storing of frames as images
     def new_dewarp(self):
-        vidpath = self.iVidPath
+        vidpath = self.iVidPath #get input video path
+        # isInROI is deprecated and not used in this program
         def isInROI(x, y, R1, R2, Cx, Cy):
             isInOuter = False
             isInInner = False
@@ -98,7 +110,13 @@ class Fy360(QWidget):
                 if(rt < R1*R1):
                     isInInner = True
             return isInOuter and not isInInner
-
+        """ ws = width of input video
+            hs = height of input video
+            wd = width of destination/output video
+            Hd = height of destinaton/output video
+          
+        """
+        
         def buildMap(Ws, Hs, Wd, Hd, R1, R2, Cx, Cy):
             map_x = np.zeros((Hd, Wd),np.float32)
             map_y = np.zeros((Hd, Wd),np.float32)
@@ -120,11 +138,11 @@ class Fy360(QWidget):
             # return result
             return result
 
-        disp = Display((800, 600))
+        disp = Display((800, 600)) #initialise a 800x600 simplecv display to show preview
         #disp = Display((1296,972))
         vals = []
         last = (0, 0)
-        # Load the video from the rpi
+        # Load the video
         vc = VirtualCamera(vidpath, "video")
         # Sometimes there is crud at the begining, buffer it out
         for i in range(0, 10):
