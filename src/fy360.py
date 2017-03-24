@@ -110,6 +110,7 @@ class Fy360(QWidget):
                 if(rt < R1*R1):
                     isInInner = True
             return isInOuter and not isInInner
+
         """ ws = width of input video
             hs = height of input video
             wd = width of destination/output video
@@ -209,6 +210,8 @@ class Fy360(QWidget):
             self.statusText.setText(str( "Status: Done"))
             disp.quit()
 
+    #join frames to make a video (which has no audio yet) 
+    #and then add the extracted audio (from stripAudio) to the video
     def addFramesAudio(self):
 
         outputV= self.oVidPath
@@ -222,7 +225,7 @@ class Fy360(QWidget):
         print "[360fy]------- Process complete\n"
         print "[360fy]------- The 360° video is located at : {0}\n".format(outputV)
 
-
+    #extract audio from input video( this audio will be added to output video later)
     def stripAudio(self):
         inputV = self.iVidPath
         self.resolution = subprocess.check_output(['./frame_size.sh', inputV])
@@ -234,15 +237,17 @@ class Fy360(QWidget):
         print "[360fy]-------Video frame rate = {0}\n".format(self.frameRate)
 
         print "[360fy]-------Stripping Audio from input video\n"
+        #executing ffmpeg cmd which extracts and produces a 320kbps 44100Hz 2 channer audio from input video
         subprocess.call(['ffmpeg', '-i', inputV, '-ab', '320k', '-ac', '2', '-ar', '44100' , '-vn' , '../temp_data/audio.mp3', '-y'])
 
-
+    #cleaning up files in temp_data folder
     def cleanup(self):
 
         print "[360fy]------- Cleaning Up...\n"
         subprocess.call(['rm', '../temp_data/video.mp4', '../temp_data/audio.mp3'] + glob("../temp_data/frames/*"))
         print "[360fy]------- Enjoy!!\n"
 
+    #Process complete dialog at the end of conversion
     def showVid(self):
 
         self.Dialog = QDialog()
