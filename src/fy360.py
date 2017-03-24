@@ -70,10 +70,10 @@ class Fy360(QWidget):
             self.oVidPath = oFileNewName
         #assigns extension only if file name is not null
         if oFileName[0] and not oFileName[0].endswith('.mp4'):
-            print "[360fy]------- filename doesnt have an extension \n\t\t setting mp4 as default extension\n"
+            print bcolors.WARNING + "[360fy]------- filename doesnt have an extension setting mp4 as default extension\n" + bcolors.ENDC
             oFileNewName = oFileName[0]
             oFileNewName += '.mp4'
-            print "[360fy]------- The output file path is {0}\n".format(oFileNewName)
+            print bcolors.OKGREEN +  "[360fy]------- The output file path is {0}\n".format(oFileNewName) + bcolors.ENDC
             self.outputPath.setText(oFileNewName)
             self.oVidPath = oFileNewName
 
@@ -83,14 +83,14 @@ class Fy360(QWidget):
         checkIp = str(self.inputPath.text())
         checkOp = str(self.outputPath.text())
         if  checkIp != "" and checkOp != "":
-            print "[360fy]------- Enabling Start button\n"
+            print bcolors.HEADER +  "[360fy]------- Enabling Start button\n" + bcolors.ENDC
             self.startBut.setEnabled(True)
             self.startBut.setStyleSheet('QPushButton {background-color: white; color: A3C1DA; font-weight: bold ; font: 20px bold }')
             self.startBut.setToolTip('Click to begin processing 360° video')
             self.statusText.setText("Status: Ready to run")
 
         else:
-            print "[360fy]------- Input or Output was not set Start button still disabled\n"
+            print bcolors.FAIL +  "[360fy]------- Input or Output was not set Start button still disabled\n" + bcolors.ENDC
             self.startBut.setEnabled(False)
             self.startBut.setStyleSheet('QPushButton {background-color: gray; color: black; font-weight: bold ; font: 18px }')
  
@@ -159,7 +159,7 @@ class Fy360(QWidget):
                 print "[360fy]------- center = {0}\n".format(last)
 
                 vals.append(test)
-        print "[360fy]------- Dewarping video and generating frames using center, offset1, offset2\n"
+        print bcolors.OKBLUE + "[360fy]------- Dewarping video and generating frames using center, offset1, offset2\n" + bcolors.ENDC
 
 
 
@@ -184,20 +184,21 @@ class Fy360(QWidget):
         Ws = img.width
         Hs = img.height
         # build the pixel map, this could be sped up
-        print ("BUILDING MAP!")
+        print bcolors.OKGREEN + "BUILDING MAP!" + bcolors.ENDC
  
         xmap, ymap = buildMap(Ws, Hs, Wd, Hd, R1, R2, Cx, Cy)
-        print "MAP DONE!"
+        print bcolors.OKBLUE + "MAP DONE" + bcolors.ENDC
 
         result = unwarp(img, xmap, ymap)
 
         result.save(disp)
 
+        
+        print bcolors.OKBLUE + "[360fy]------- Storing frames into ../temp_data/frames\n" + bcolors.ENDC
         i = 0
-        print "[360fy]------- Storing frames into ../temp_data/frames\n"
-
         while img is not None:
-            print "Frame Number: {0}".format(i)
+            print "\rFrame Number: {0}".format(i),
+            #print " percent complete         \r",
             result = unwarp(img, xmap, ymap)
             result.save(disp)
             # Save to file
@@ -206,6 +207,8 @@ class Fy360(QWidget):
     
             img = vc.getImage()
             i = i + 1
+        print " \n"
+
         if img is None:
             self.statusText.setText(str( "Status: Done"))
             disp.quit()
@@ -238,7 +241,7 @@ class Fy360(QWidget):
 
         print "[360fy]-------Stripping Audio from input video\n"
         #executing ffmpeg cmd which extracts and produces a 320kbps 44100Hz 2 channer audio from input video
-        subprocess.call(['ffmpeg', '-i', inputV, '-ab', '320k', '-ac', '2', '-ar', '44100' , '-vn' , '../temp_data/audio.mp3', '-y'])
+        subprocess.call(['ffmpeg','-loglevel', 'panic', '-i', inputV, '-ab', '320k', '-ac', '2', '-ar', '44100' , '-vn' , '../temp_data/audio.mp3', '-y'])
 
     #cleaning up files in temp_data folder
     def cleanup(self):
