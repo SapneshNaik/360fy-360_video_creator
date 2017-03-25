@@ -198,6 +198,8 @@ class Fy360(QWidget):
         i = 0
         while img is not None:
             print "\rFrame Number: {0}".format(i),
+
+            sys.stdout.flush() #flushes stdout so that frame numbers print continually without skipping
             #print " percent complete         \r",
             result = unwarp(img, xmap, ymap)
             result.save(disp)
