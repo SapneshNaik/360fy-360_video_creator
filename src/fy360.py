@@ -41,7 +41,7 @@ class Fy360(QWidget):
 
     #this fn executes when chooseVidIn is clicked
     def openInputVid(self):
-        print bcolors.HEADER + "[360fy]------- Selecting input video\n" + bcolors.ENDC
+        print "[360fy]------- Selecting input video\n"
         #open a Qt file dialog which only accepts videos with avi, mp4, mkv or h264 extension 
         iFileName = QFileDialog.getOpenFileName(self, str("Open Video"), '', str("Video Files(*.avi *.mp4 *.mkv *.h264)"))
         print bcolors.OKGREEN + "[360fy]------- The input fle path is:{0}\n".format(iFileName[0]) + bcolors.ENDC
@@ -53,7 +53,7 @@ class Fy360(QWidget):
 
     # this fn executes when chooseVidOut is clicked
     def saveOutputVid(self):
-        print bcolors.HEADER +"[360fy]------- Selecting output video\n" + bcolors.ENDC
+        print "[360fy]------- Selecting output video\n" 
         '''open a Qt file dialog to get save location
            this only lets u save as .mp4
            and default filename is set to input filename obtained from openInputVid(self) so this will not execute untill
@@ -159,7 +159,7 @@ class Fy360(QWidget):
                 print "[360fy]------- center = {0}\n".format(last)
 
                 vals.append(test)
-        print bcolors.OKBLUE + "[360fy]------- Dewarping video and generating frames using center, offset1, offset2\n" + bcolors.ENDC
+        print "[360fy]------- Dewarping video and generating frames using center, offset1, offset2\n" 
 
 
 
@@ -184,20 +184,22 @@ class Fy360(QWidget):
         Ws = img.width
         Hs = img.height
         # build the pixel map, this could be sped up
-        print bcolors.OKGREEN + "BUILDING MAP!" + bcolors.ENDC
+        print "BUILDING MAP" 
  
         xmap, ymap = buildMap(Ws, Hs, Wd, Hd, R1, R2, Cx, Cy)
-        print bcolors.OKBLUE + "MAP DONE" + bcolors.ENDC
+        print "MAP DONE"
 
         result = unwarp(img, xmap, ymap)
 
         result.save(disp)
 
         
-        print bcolors.OKBLUE + "[360fy]------- Storing frames into ../temp_data/frames\n" + bcolors.ENDC
+        print "[360fy]------- Storing frames into ../temp_data/frames\n"
         i = 0
         while img is not None:
-            print "\rFrame Number: {0}".format(i),
+            print bcolors.OKBLUE + "\rFrame Number: {0}".format(i) + bcolors.ENDC,
+
+            sys.stdout.flush() #flushes stdout so that frame numbers print continually without skipping
             #print " percent complete         \r",
             result = unwarp(img, xmap, ymap)
             result.save(disp)
@@ -225,19 +227,18 @@ class Fy360(QWidget):
         subprocess.call(['./merge.sh', outFrameRate, outResolution])
         print "[360fy]------- Adding original Audio to the dewarped video\n"    
         subprocess.call(['./add_audio.sh', outputV])
-        print "[360fy]------- Process complete\n"
-        print "[360fy]------- The 360° video is located at : {0}\n".format(outputV)
+        print bcolors.OKGREEN +"[360fy]------- Process complete\n" + bcolors.ENDC
+        print bcolors.OKGREEN + "[360fy]------- The 360° video is located at : {0}\n".format(outputV) + bcolors.ENDC
 
     #extract audio from input video( this audio will be added to output video later)
     def stripAudio(self):
         inputV = self.iVidPath
         self.resolution = subprocess.check_output(['./frame_size.sh', inputV])
-        print "[360fy]-------Input video properties\n"
-        print "[360fy]-------Video frame size = {0}\n".format(self.resolution)
+        print bcolors.OKGREEN + "[360fy]-------Input Video frame size = {0}\n".format(self.resolution) + bcolors.ENDC
         
         #print self.resolution
         self.frameRate = subprocess.check_output(['./frame_rate.sh', inputV])
-        print "[360fy]-------Video frame rate = {0}\n".format(self.frameRate)
+        print bcolors.OKGREEN + "[360fy]-------Input Video frame rate = {0}\n".format(self.frameRate) + bcolors.ENDC
 
         print "[360fy]-------Stripping Audio from input video\n"
         #executing ffmpeg cmd which extracts and produces a 320kbps 44100Hz 2 channer audio from input video
@@ -246,9 +247,9 @@ class Fy360(QWidget):
     #cleaning up files in temp_data folder
     def cleanup(self):
 
-        print "[360fy]------- Cleaning Up...\n"
+        print bcolors.WARNING + "[360fy]------- Cleaning Up...\n" + bcolors.ENDC
         subprocess.call(['rm', '../temp_data/video.mp4', '../temp_data/audio.mp3'] + glob("../temp_data/frames/*"))
-        print "[360fy]------- Enjoy!!\n"
+        print bcolors.OKGREEN + "[360fy]------- Enjoy!!\n" + bcolors.ENDC
 
     #Process complete dialog at the end of conversion
     def showVid(self):
@@ -724,8 +725,8 @@ class Fy360(QWidget):
 
     def startMessage(self):
         self.statusText.setText("Status: Waiting for confirmation")
-        print "[360fy]------- Starting the process\n"
-        print "[360fy]------- [ Note ] When the Preview is shown, click at the Center of the image,\n\t\t moving to right click on the Begining of the useful image \n\t\t and then click on the ending of the useful Image"
+        print bcolors.HEADER + "[360fy]------- Starting the process\n" + bcolors.ENDC
+        print bcolors.OKBLUE + "[360fy]-[ Note ]-- [ Note ] When the Preview is shown, click at the Center of the image, moving to right click on the Begining of the useful image and then click on the ending of the useful Image after that hit ESC\n" + bcolors.ENDC
 
         self.tip_dialog.close()
 
@@ -757,7 +758,7 @@ class Fy360(QWidget):
         #call center method
         self.center()
        
-            
+        
         #inputHead = QLabel("INPUT")
         inputLabel = QLabel('Select Video:')
         outputLabel = QLabel('Save As:')
@@ -851,6 +852,7 @@ class Fy360(QWidget):
         self.setWindowIcon(QIcon('../resource/logo.png'))
         self.setMinimumSize(814, 350)
         self.show()
+        print bcolors.HEADER + "\n[360fy]------- UI loaded\n" + bcolors.ENDC
 
     #open app at center of screen
     def center(self):
