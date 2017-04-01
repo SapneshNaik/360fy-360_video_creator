@@ -22,7 +22,7 @@ import os
 import math
 import urllib
 import time
-
+import threading
 
 
 
@@ -731,9 +731,16 @@ class Fy360(QWidget):
         self.tip_dialog.close()
 
         self.statusText.setText("Status: Running")
+        self.statusText.setText("Status: extracting audio")
         self.stripAudio()
-        self.new_dewarp()
+        #self.new_dewarp()
+        self.statusText.setText("Status: dewarping video")
+        t1=threading.Thread(target=self.new_dewarp)
+        t1.start()
+        t1.join()
+        self.statusText.setText("Status: Almost Done")
         self.addFramesAudio()
+        self.statusText.setText("Status: Done")
         self.cleanup()
         self.showVid()
 
