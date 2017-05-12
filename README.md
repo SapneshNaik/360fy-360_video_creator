@@ -14,9 +14,9 @@ see kogeto dot lens here : https://www.amazon.com/Kogeto-Panoramic-Accessory-iPh
 
 <h3> How can I get all requirements?: </h3>
 <h4> Intructions for a Ubuntu 16.04 machine are given below and the steps are similiar for other Debian based distributions too </h4>
-<ol>
+<ul>
 <li> check if your python version is 2.7 <li>
-`python --version`
+<ul> <li> ```python --version``` </li></ul>
 
 
 
