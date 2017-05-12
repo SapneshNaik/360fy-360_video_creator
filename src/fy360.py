@@ -119,6 +119,9 @@ class Fy360(QWidget):
         """
         
         def buildMap(Ws, Hs, Wd, Hd, R1, R2, Cx, Cy):
+            #the function throws type error, if Wd and Hd are not converted to integers
+            Hd =int(Hd)
+            Wd = int(Wd)
             map_x = np.zeros((Hd, Wd),np.float32)
             map_y = np.zeros((Hd, Wd),np.float32)
             rMap = np.linspace(R1, R1 + (R2 - R1), Hd)
@@ -217,7 +220,7 @@ class Fy360(QWidget):
 
     #join frames to make a video (which has no audio yet) 
     #and then add the extracted audio (from stripAudio) to the video
-    def addFramesAudio(self):
+    def addFramesAudioMetadata(self):
 
         outputV= self.oVidPath
         outFrameRate = self.frameRate
@@ -226,7 +229,9 @@ class Fy360(QWidget):
         print "[360fy]------- Merging all frames to genenrate dewarped video\n"
         subprocess.call(['./merge.sh', outFrameRate, outResolution])
         print "[360fy]------- Adding original Audio to the dewarped video\n"    
-        subprocess.call(['./add_audio.sh', outputV])
+        subprocess.call(['./add_audio.sh'])
+        print "[360fy]------- FInally adding meta-data to the video\n"    
+        subprocess.call(['./inject_metadata.sh', outputV])
         print bcolors.OKGREEN +"[360fy]------- Process complete\n" + bcolors.ENDC
         print bcolors.OKGREEN + "[360fy]------- The 360° video is located at : {0}\n".format(outputV) + bcolors.ENDC
 
@@ -248,7 +253,7 @@ class Fy360(QWidget):
     def cleanup(self):
 
         print bcolors.WARNING + "[360fy]------- Cleaning Up...\n" + bcolors.ENDC
-        subprocess.call(['rm', '../temp_data/video.mp4', '../temp_data/audio.mp3'] + glob("../temp_data/frames/*"))
+        subprocess.call(['rm', '../temp_data/video.mp4', '../temp_data/audio.mp3', '../temp_data/video_a.mp4'] + glob("../temp_data/frames/*"))
         print bcolors.OKGREEN + "[360fy]------- Enjoy!!\n" + bcolors.ENDC
 
     #Process complete dialog at the end of conversion
@@ -739,7 +744,7 @@ class Fy360(QWidget):
         t1.start()
         t1.join()
         self.statusText.setText("Status: Almost Done")
-        self.addFramesAudio()
+        self.addFramesAudioMetadata()
         self.statusText.setText("Status: Done")
         self.cleanup()
         self.showVid()

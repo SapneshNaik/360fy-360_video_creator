@@ -1,0 +1,20 @@
+missing module named org - imported by copy
+missing module named ElementC14N - imported by xml.etree.ElementTree
+missing module named _winreg - imported by mimetypes, urllib
+missing module named _scproxy - imported by urllib
+missing module named EasyDialogs - imported by getpass
+missing module named msvcrt - imported by subprocess, getpass
+missing module named SOCKS - imported by ftplib
+missing module named rourl2path - imported by urllib
+missing module named 'org.python' - imported by pickle, xml.sax
+missing module named java - imported by xml.sax._exceptions
+missing module named _xmlplus - imported by xml
+missing module named _tkinter - imported by FixTk, Tkinter
+missing module named _subprocess - imported by subprocess
+missing module named riscosenviron - imported by os
+missing module named riscospath - imported by os
+missing module named riscos - imported by os
+missing module named ce - imported by os
+missing module named _emx_link - imported by os
+missing module named os2 - imported by os
+missing module named nt - imported by os, ntpath
