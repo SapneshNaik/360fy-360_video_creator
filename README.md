@@ -1,6 +1,13 @@
-<h1>360fy - A simple 360° video creator</h1>
+<h1>360fy - A 360° video creator</h1>
 
-This project aims to convert the video from a kogeto-dot into a 360° video.
+360fy is a tool to convert the video shot from a kogeto-dot lens into a 360° video.
 
-Buy kogeto dot here : https://www.amazon.com/Kogeto-Panoramic-Accessory-iPhone-Black/dp/B005NFINYC
+see kogeto dot lens here : https://www.amazon.com/Kogeto-Panoramic-Accessory-iPhone-Black/dp/B005NFINYC
+
+<h4> Requirements: </h4>
+<ul>
+<li> Python 2.7 </li>
+<li> simpleCV 1.3.0 </li>
+
+
 
