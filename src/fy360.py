@@ -59,6 +59,7 @@ class Fy360(QWidget):
            and default filename is set to input filename obtained from openInputVid(self) so this will not execute untill
            that fn is executed first
         '''
+        # self.iVidPath_360 = self.iVidPath+"_360"
         oFileName = QFileDialog.getSaveFileName(self, str("Open Video"), self.iVidPath, str("Video Files (*.mp4)"), initialFilter='*.mp4')
         
         #check extension
@@ -764,6 +765,7 @@ class Fy360(QWidget):
 
     def initUI(self):
         #set up a grid layout
+        # app.setStyle(QStyleFactory.create("plastique")
         grid = QGridLayout()
         self.setLayout(grid)
         grid.setSpacing(10)
@@ -900,6 +902,7 @@ class bcolors:
         
 if __name__ == '__main__':
     
+    QApplication.setStyle("mac") #here
     app = QApplication(sys.argv)
     splash_pix = QPixmap('../resource/logo.png')
     start = time.time()
@@ -908,7 +911,6 @@ if __name__ == '__main__':
     while time.time() - start < 1:
         time.sleep(0.003)
         app.processEvents()
-
     ex = Fy360()
     splash.finish(ex)
     sys.exit(app.exec_())
