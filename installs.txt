@@ -1,0 +1,3 @@
+git
+Python- Python 2.7.13 - preinstalled on ubnntu 17/16
+sudo apt-get update
