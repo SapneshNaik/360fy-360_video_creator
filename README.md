@@ -15,12 +15,10 @@ see kogeto dot lens here : https://www.amazon.com/Kogeto-Panoramic-Accessory-iPh
 <h3> How can I get all requirements?: </h3>
 <h4> Intructions for a Ubuntu 16.04 machine are given below and the steps are similiar for other Debian based distributions too </h4>
 <ul>
-<li> check if your python version is 2.7 
-<ul> <li> ```python --version``` </li></ul> </li>
-<li> Install codecs <ul><li>```sudo apt-get install libavcodec-extra```</li>
-<li>```sudo apt-get install libav-tools``` </li> </ul> </li>
-
-
-
-
+<li> check if your python version is 2.7 </li>
+ ```python --version```
+<li> Install codecs </li>
+```sudo apt-get install libavcodec-extra```
+```sudo apt-get install libav-tools``` 
+</ul>
 
