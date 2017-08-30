@@ -13,11 +13,8 @@ see kogeto dot lens here : https://www.amazon.com/Kogeto-Panoramic-Accessory-iPh
 <li> libavcodec </li> </ul>
 
 <h3> Input Video: </h3>
-<ul>
-<li>
-The video obtained from lens is in the form of a doughnut.
-</li>
-</ul>
+
+<h6>The video obtained from lens is in the form of a doughnut.</h6>
 ![Input Video screenshot text](https://github.com/SapneshNaik/360fy-kogeto_dot/blob/master/extra/images/test1IP.png?raw=true "Input frame")
 
 
