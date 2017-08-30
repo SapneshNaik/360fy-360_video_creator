@@ -13,7 +13,8 @@ see kogeto dot lens here : https://www.amazon.com/Kogeto-Panoramic-Accessory-iPh
 <li> libavcodec </li> </ul>
 
 <h3> Input Video: </h3>
-<img> 
+![Input Video screenshot text](https://github.com/SapneshNaik/360fy-kogeto_dot/blob/master/extra/images/test1IP.png?raw=true)
+
 
 
 <h3>Results:</h3>
