@@ -22,7 +22,7 @@ The video obtained from lens is in the form of a doughnut.
 <h3>Results:</h3>
 You can pan using mouse or touchpad if you are using PC and if using a smarphone then you can just move the device itself to pan.
 
-![Output Video screenshot text](https://github.com/SapneshNaik/360fy-kogeto_dot/blob/master/extra/images/test2_final.png?raw=true "Output video frame"){:height="50%" width="50%"}
+![Output Video screenshot text](https://github.com/SapneshNaik/360fy-kogeto_dot/blob/master/extra/images/test2_final.png?raw=true "Output video frame")
 
 <ul>
 <li>
@@ -37,33 +37,33 @@ You can pan using mouse or touchpad if you are using PC and if using a smarphone
 
 ![Main Window
 ](https://github.com/SapneshNaik/360fy-kogeto_dot/blob/master/extra/images/test2_ready.png?raw=true "Main Window
-"){:height="50%" width="50%"}
+")
 
 <h6>Usage Prompt<h6>
 
 ![Usage Prompt
-](https://github.com/SapneshNaik/360fy-kogeto_dot/blob/master/extra/images/test2_note.png?raw=true "Usage Prompt"){:height="50%" width="50%"}
+](https://github.com/SapneshNaik/360fy-kogeto_dot/blob/master/extra/images/test2_note.png?raw=true "Usage Prompt")
 
 <h6>Live Dewarp Preview</h6>
 
 ![Live Dewarp Preview
-](https://github.com/SapneshNaik/360fy-kogeto_dot/blob/master/extra/images/test2_live_dewarp_preview.png?raw=true "Live Dewarp Preview"){:height="50%" width="50%"}
+](https://github.com/SapneshNaik/360fy-kogeto_dot/blob/master/extra/images/test2_live_dewarp_preview.png?raw=true "Live Dewarp Preview")
 
 <h6>Command Line Output</h6>
 
 ![Command Line Output
 ](https://github.com/SapneshNaik/360fy-kogeto_dot/blob/master/extra/images/test1FN.png?raw=true "Command Line Output
-"){:height="50%" width="50%"}
+")
 
 <h6>Process Complete Dialog</h6>
 
 ![Process Complete Dialog
 ](https://github.com/SapneshNaik/360fy-kogeto_dot/blob/master/extra/images/test1OP.png?raw=true "Process Complete Dialog
-"){:height="50%" width="50%"}
+")
 
 <h6>You can also access documentation and video tutorial from inside the application</h6>
 
 ![help dialog
 ](https://github.com/SapneshNaik/360fy-kogeto_dot/blob/master/extra/images/test2_help.png?raw=true "Help Dialog
-"){:height="50%" width="50%"}
+")
 
