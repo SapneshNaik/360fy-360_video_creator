@@ -17,15 +17,15 @@ see kogeto dot lens here : https://www.amazon.com/Kogeto-Panoramic-Accessory-iPh
 <li>
 The video obtained from lens is in the form of a doughnut.
 </li>
-![Input Video screenshot text](https://github.com/SapneshNaik/360fy-kogeto_dot/blob/master/extra/images/test1IP.png?raw=true "Input frame"){:height="50%" width="50%"}
 </ul>
+![Input Video screenshot text](https://github.com/SapneshNaik/360fy-kogeto_dot/blob/master/extra/images/test1IP.png?raw=true "Input frame")
+
 
 <h3>Results:</h3>
 You can pan using mouse or touchpad if you are using PC and if using a smarphone then you can just move the device itself to pan.
+![Output Video screenshot text](https://github.com/SapneshNaik/360fy-kogeto_dot/blob/master/extra/images/test2_final.png?raw=true "Output video frame"){:height="50%" width="50%"}
 <ul>
-<li>
-![Output Video screenshot text](https://github.com/SapneshNaik/360fy-kogeto_dot/blob/master/extra/images/test2_final.png?raw=true "Output video frame"){:height="50%" width="50%"} </li>
-<li>
+
 <li>
 360° video: https://www.youtube.com/watch?v=MVa0xW-Tjdw</li>
 <li>
