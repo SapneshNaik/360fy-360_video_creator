@@ -12,13 +12,8 @@ see kogeto dot lens here : https://www.amazon.com/Kogeto-Panoramic-Accessory-iPh
 <li> PyQt5 </li>
 <li> libavcodec </li> </ul>
 
-<h3> How can I get all requirements?: </h3>
-<h4> Intructions for a Ubuntu 16.04 machine are given below and the steps are similiar for other Debian based distributions too </h4>
-<ul>
-<li> check if your python version is 2.7 </li>
- ```python --version```
-<li> Install codecs </li>
-```sudo apt-get install libavcodec-extra```
-```sudo apt-get install libav-tools``` 
-</ul>
+Results:
+You can pan using mouse or touchpad if you are using PC and if using a smarphone then you can just move the device itself to pan.
 
+https://www.youtube.com/watch?v=MVa0xW-Tjdw
+https://www.youtube.com/watch?v=jhXMzMbC_bQ
