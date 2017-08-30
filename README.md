@@ -12,7 +12,7 @@ see kogeto dot lens here : https://www.amazon.com/Kogeto-Panoramic-Accessory-iPh
 <li> PyQt5 </li>
 <li> libavcodec </li> </ul>
 
-Results:
+<h3>Results:</h3>
 You can pan using mouse or touchpad if you are using PC and if using a smarphone then you can just move the device itself to pan.
 <ul>
 <li>
